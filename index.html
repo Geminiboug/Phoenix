@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olympe Hounkpevi (Lib) | Portfolio Liquid Glass</title>
-  <meta name="description" content="Portfolio d'Olympe Hounkpevi (Lib), étudiant Tek3 Epitech Bénin, développeur C/C++, Web Fullstack et créateur de contenu.">
+  <title>Olympe Hounkpevi (Lib) | Développeur Logiciel & Créateur</title>
+  <meta name="description" content="Portfolio d'Olympe Hounkpevi (Lib), étudiant Tek3 Epitech Bénin, développeur C/C++, Fullstack Web & Créateur de contenu.">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons -->
+  <!-- Lucide Icons & FontAwesome CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <script>
     tailwind.config = {
@@ -36,8 +37,8 @@
             }
           },
           fontFamily: {
-            sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Inter', 'Segoe UI', 'Roboto', 'sans-serif'],
-            mono: ['JetBrains Mono', 'SF Mono', 'Fira Code', 'Consolas', 'monospace']
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Inter', 'Segoe UI', 'sans-serif'],
+            mono: ['JetBrains Mono', 'SF Mono', 'Fira Code', 'monospace']
           },
           animation: {
             'float-slow': 'float 8s ease-in-out infinite',
@@ -47,15 +48,11 @@
           keyframes: {
             float: {
               '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-              '50%': { transform: 'translateY(-15px) rotate(1deg)' }
+              '50%': { transform: 'translateY(-12px) rotate(1deg)' }
             },
             floatRev: {
               '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-              '50%': { transform: 'translateY(15px) rotate(-1deg)' }
-            },
-            pulseGlow: {
-              '0%': { opacity: '0.4' },
-              '100%': { opacity: '0.8' }
+              '50%': { transform: 'translateY(12px) rotate(-1deg)' }
             }
           }
         }
@@ -64,24 +61,24 @@
   </script>
 
   <style>
-    /* AMBIENT MESH BACKGROUND WITH DYNAMIC LIQUID BLOBS */
+    /* AMBIENT MESH BACKGROUND WITH DYNAMIC LIQUID BLOBS (FALLOW INSPIRED + GLASS) */
     body {
       background-color: #f8fafc;
       background-image: 
-        radial-gradient(at 5% 10%, rgba(37, 99, 235, 0.15) 0px, transparent 40%),
-        radial-gradient(at 95% 15%, rgba(220, 38, 38, 0.12) 0px, transparent 40%),
-        radial-gradient(at 50% 50%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
+        radial-gradient(at 10% 10%, rgba(37, 99, 235, 0.14) 0px, transparent 45%),
+        radial-gradient(at 90% 15%, rgba(220, 38, 38, 0.12) 0px, transparent 45%),
+        radial-gradient(at 50% 50%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
         radial-gradient(at 85% 85%, rgba(220, 38, 38, 0.12) 0px, transparent 45%),
         radial-gradient(at 15% 90%, rgba(29, 78, 216, 0.14) 0px, transparent 45%);
       background-attachment: fixed;
     }
 
-    /* LIGHT LIQUID GLASS SPECULAR SYSTEM (iOS / VisionOS Style) */
+    /* LIGHT LIQUID GLASS SPECULAR SYSTEM */
     .light-liquid-glass {
-      background: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.72);
       backdrop-filter: blur(28px) saturate(190%) contrast(102%);
       -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(102%);
-      border: 1px solid rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.9);
       box-shadow: 
         inset 0 2px 2px 0 rgba(255, 255, 255, 0.95),
         inset 0 -1.5px 2px 0 rgba(148, 163, 184, 0.25),
@@ -91,7 +88,7 @@
     }
 
     .light-liquid-glass-blue {
-      background: rgba(239, 246, 255, 0.72);
+      background: rgba(239, 246, 255, 0.75);
       backdrop-filter: blur(30px) saturate(200%);
       -webkit-backdrop-filter: blur(30px) saturate(200%);
       border: 1px solid rgba(191, 219, 254, 0.9);
@@ -102,7 +99,7 @@
     }
 
     .light-liquid-glass-red {
-      background: rgba(254, 242, 242, 0.72);
+      background: rgba(254, 242, 242, 0.75);
       backdrop-filter: blur(30px) saturate(200%);
       -webkit-backdrop-filter: blur(30px) saturate(200%);
       border: 1px solid rgba(254, 202, 202, 0.9);
@@ -132,7 +129,7 @@
       transform: scale(0.95);
     }
 
-    /* CAROUSEL TRACK */
+    /* CAROUSEL SLIDE CONTAINER */
     .carousel-container {
       display: flex;
       transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
@@ -149,6 +146,11 @@
       background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #dc2626 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    /* Progress bar animation */
+    .progress-bar-fill {
+      transition: width 1s ease-in-out;
     }
 
     /* Custom Scrollbar */
@@ -170,15 +172,47 @@
 </head>
 <body class="text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-brand-600 selection:text-white">
 
-  <!-- FLOATING BACKGROUND LIQUID GRAPHICS -->
+  <!-- FLOATING LIQUID AMBIENT GRAPHICS -->
   <div class="fixed top-20 left-10 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none animate-float-slow z-0"></div>
   <div class="fixed bottom-20 right-10 w-96 h-96 bg-crimson-500/10 rounded-full blur-3xl pointer-events-none animate-float-reverse z-0"></div>
 
+  <!-- FALLOW STYLE TOP CONTACT BAR -->
+  <div class="bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-4 md:px-8 py-2 z-50 text-xs text-slate-600">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-6">
+        <span class="flex items-center space-x-2">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-600"></i>
+          <span>Cotonou, Bénin</span>
+        </span>
+        <span class="hidden sm:flex items-center space-x-2">
+          <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-crimson-600"></i>
+          <span>Étudiant Tek3 &bull; Epitech Bénin</span>
+        </span>
+      </div>
+
+      <!-- Social Links Bar -->
+      <div class="flex items-center space-x-4">
+        <a href="https://github.com/mahougnon-olympe" target="_blank" class="hover:text-brand-700 transition-colors flex items-center space-x-1 font-semibold">
+          <i class="fa-brands fa-github text-sm"></i>
+          <span class="hidden md:inline">GitHub</span>
+        </a>
+        <a href="https://tiktok.com/@libero_emargine" target="_blank" class="hover:text-crimson-600 transition-colors flex items-center space-x-1 font-semibold">
+          <i class="fa-brands fa-tiktok text-sm"></i>
+          <span class="hidden md:inline">TikTok</span>
+        </a>
+        <a href="https://youtube.com/@libero_emargine" target="_blank" class="hover:text-crimson-600 transition-colors flex items-center space-x-1 font-semibold">
+          <i class="fa-brands fa-youtube text-sm"></i>
+          <span class="hidden md:inline">YouTube</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- FLOATING SPATIAL GLASS NAVBAR -->
-  <header class="sticky top-4 z-50 px-4 md:px-8 max-w-7xl mx-auto w-full">
+  <header class="sticky top-2 z-50 px-4 md:px-8 max-w-7xl mx-auto w-full">
     <div class="light-liquid-glass rounded-full px-5 py-3 flex items-center justify-between shadow-xl">
       
-      <!-- Identity Pill -->
+      <!-- Logo Identity -->
       <a href="#" onclick="goToSlide(0); return false;" class="flex items-center space-x-3 group">
         <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-700 via-brand-600 to-crimson-600 p-[2px] shadow-md group-hover:scale-105 transition-transform flex items-center justify-center">
           <div class="w-full h-full bg-white rounded-full flex items-center justify-center font-bold text-brand-700 text-sm">
@@ -190,36 +224,37 @@
             <span>Olympe Hounkpevi</span>
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-100/80 text-brand-800 font-bold border border-brand-200">Lib</span>
           </span>
-          <span class="text-[11px] text-slate-500 block font-medium">Développeur Logiciel &bull; Tek3 Epitech</span>
+          <span class="text-[11px] text-slate-500 block font-medium">Développeur &amp; Créateur</span>
         </div>
       </a>
 
-      <!-- Carousel Floating Glass Tabs -->
+      <!-- Carousel Glass Tabs -->
       <nav class="hidden lg:flex items-center space-x-1 bg-white/40 p-1 rounded-full border border-white/60 text-xs font-semibold backdrop-blur-md">
         <button onclick="goToSlide(0)" id="nav-dot-0" class="slide-nav-btn px-4 py-1.5 rounded-full bg-white text-brand-700 shadow-md transition-all">
           01. Accueil
         </button>
         <button onclick="goToSlide(1)" id="nav-dot-1" class="slide-nav-btn px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 transition-all">
-          02. Projet Phare
+          02. À propos &amp; Skills
         </button>
         <button onclick="goToSlide(2)" id="nav-dot-2" class="slide-nav-btn px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 transition-all">
-          03. Réalisations
+          03. Projet Phare
         </button>
         <button onclick="goToSlide(3)" id="nav-dot-3" class="slide-nav-btn px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 transition-all">
-          04. Compétences
+          04. Portfolio
         </button>
         <button onclick="goToSlide(4)" id="nav-dot-4" class="slide-nav-btn px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 transition-all">
-          05. Communauté & Contenu
+          05. Communauté &amp; Roman
         </button>
       </nav>
 
-      <!-- Action & Links -->
+      <!-- CTA Button (Fallow Inspired Let's Talk) -->
       <div class="flex items-center space-x-2">
-        <a href="https://github.com/mahougnon-olympe" target="_blank" rel="noopener noreferrer" class="liquid-btn p-2 rounded-full light-liquid-glass text-slate-700 hover:text-brand-700 transition-colors flex items-center justify-center" title="GitHub">
-          <i data-lucide="github" class="w-4 h-4"></i>
-        </a>
         <button onclick="openLegalModal()" class="liquid-btn px-3.5 py-1.5 rounded-full light-liquid-glass text-xs font-semibold text-slate-700 hover:text-crimson-600 border border-white/80 transition-colors">
           Mentions Légales
+        </button>
+        <button onclick="goToSlide(4)" class="liquid-btn px-4 py-2 rounded-full bg-gradient-to-r from-brand-700 to-crimson-600 text-white text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 shadow-md">
+          <span>Me Contacter</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
         </button>
       </div>
 
@@ -229,60 +264,61 @@
   <!-- MAIN CAROUSEL WRAPPER -->
   <main class="flex-1 relative z-10 overflow-hidden pt-4">
     
-    <div id="carouselTrack" class="carousel-container min-h-[calc(100vh-160px)]">
+    <div id="carouselTrack" class="carousel-container min-h-[calc(100vh-170px)]">
 
-      <!-- ================= SLIDE 1 : HERO BENTO SPATIAL GLASS ================= -->
-      <section class="carousel-slide px-4 md:px-8 py-8 flex items-center justify-center">
+      <!-- ================= SLIDE 1 : HERO SECTION (FALLOW + GLASS) ================= -->
+      <section class="carousel-slide px-4 md:px-8 py-6 flex items-center justify-center">
         <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
+          <!-- Left Text Banner -->
           <div class="lg:col-span-7 space-y-6">
             
             <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full light-liquid-glass-blue text-brand-800 text-xs font-semibold">
               <span class="w-2.5 h-2.5 rounded-full bg-brand-600 animate-pulse"></span>
-              <span>Cotonou, Bénin &bull; Promo Tek3 Epitech</span>
+              <span>Epitech Bénin Tek3 &bull; Cotonou</span>
             </div>
 
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-none">
-              Concepteur logiciel, <br>
-              <span class="accent-gradient-text">développeur fullstack</span> <br>
-              & créateur.
+              Salut, je suis <br>
+              <span class="accent-gradient-text">Olympe Hounkpevi (Lib)</span> <br>
+              <span class="text-2xl md:text-3xl text-slate-700 font-bold block mt-2">Développeur Logiciel &amp; Créateur</span>
             </h1>
 
             <p class="text-slate-600 text-base md:text-lg leading-relaxed max-w-2xl">
-              Bienvenue sur mon portfolio. Étudiant en 3e année à Epitech Bénin, je conçois des systèmes performants en C/C++, des applications web temps réel et des outils pédagogiques. En parallèle, j'anime la communication de Tekbot Epitech et je partage ma passion du jeu vidéo sur mes réseaux.
+              Bienvenue sur mon espace. Étudiant en 3e année à Epitech Bénin, je conçois des moteurs de jeu et systèmes C/C++, des applications web temps réel et des outils pédagogiques. En parallèle, je suis Responsable Com chez Tekbot et créateur de contenu gaming.
             </p>
 
             <div class="flex flex-wrap items-center gap-4 pt-2">
-              <button onclick="goToSlide(1)" class="liquid-btn px-6 py-3.5 rounded-full bg-gradient-to-r from-brand-700 via-brand-600 to-crimson-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-brand-700/20 hover:shadow-brand-700/30 flex items-center space-x-2">
-                <span>Projet Phare : Libero's Multi</span>
+              <button onclick="goToSlide(2)" class="liquid-btn px-6 py-3.5 rounded-full bg-gradient-to-r from-brand-700 via-brand-600 to-crimson-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-brand-700/20 flex items-center space-x-2">
+                <span>Découvrir Libero's Multi</span>
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </button>
 
-              <button onclick="goToSlide(2)" class="liquid-btn px-6 py-3.5 rounded-full light-liquid-glass text-slate-700 font-semibold text-xs uppercase tracking-wider hover:text-brand-700 flex items-center space-x-2">
-                <i data-lucide="layers" class="w-4 h-4 text-brand-600"></i>
-                <span>Explorer mes 15+ projets</span>
-              </button>
+              <a href="https://tiktok.com/@libero_emargine" target="_blank" class="liquid-btn px-5 py-3.5 rounded-full light-liquid-glass text-slate-800 font-semibold text-xs uppercase tracking-wider hover:text-crimson-600 flex items-center space-x-2">
+                <i class="fa-brands fa-tiktok text-crimson-600"></i>
+                <span>Suivre @libero_emargine</span>
+              </a>
             </div>
 
-            <!-- Bento Highlights Bar -->
-            <div class="grid grid-cols-3 gap-4 pt-6">
+            <!-- Fallow Inspired Stats Counter Bar -->
+            <div class="grid grid-cols-3 gap-4 pt-4">
               <div class="light-liquid-glass p-4 rounded-2xl text-center">
                 <span class="block text-2xl md:text-3xl font-extrabold text-slate-900">Tek3</span>
-                <span class="text-[11px] text-slate-500 font-medium">Promo Epitech Bénin</span>
+                <span class="text-[11px] text-slate-500 font-medium">Promotion Epitech</span>
               </div>
               <div class="light-liquid-glass p-4 rounded-2xl text-center">
                 <span class="block text-2xl md:text-3xl font-extrabold text-brand-700">15+</span>
-                <span class="text-[11px] text-slate-500 font-medium">Projets C/C++ & Web</span>
+                <span class="text-[11px] text-slate-500 font-medium">Projets C/C++ &amp; Web</span>
               </div>
               <div class="light-liquid-glass p-4 rounded-2xl text-center">
-                <span class="block text-2xl md:text-3xl font-extrabold text-crimson-600">@libero</span>
-                <span class="text-[11px] text-slate-500 font-medium">Création & Com</span>
+                <span class="block text-2xl md:text-3xl font-extrabold text-crimson-600">8+</span>
+                <span class="text-[11px] text-slate-500 font-medium">Jeux Temps Réel</span>
               </div>
             </div>
 
           </div>
 
-          <!-- Hero Bento Spatial Glass Visual Card -->
+          <!-- Right Bento Spatial Glass Hero Card -->
           <div class="lg:col-span-5">
             <div class="light-liquid-glass p-6 md:p-8 rounded-[2.5rem] space-y-6 relative overflow-hidden border border-white/90 shadow-2xl">
               
@@ -312,22 +348,22 @@
                     <i data-lucide="users" class="w-4 h-4 text-crimson-600"></i>
                     <span>Engagement</span>
                   </span>
-                  <span class="font-bold text-slate-900">Resp. Com Tekbot & Parrain Tek1</span>
+                  <span class="font-bold text-slate-900">Resp. Com Tekbot &amp; Parrain Tek1</span>
                 </div>
 
                 <div class="flex items-center justify-between p-3.5 rounded-2xl light-liquid-glass">
                   <span class="font-medium flex items-center space-x-2">
-                    <i data-lucide="video" class="w-4 h-4 text-brand-600"></i>
-                    <span>Création de contenu</span>
+                    <i data-lucide="book-open" class="w-4 h-4 text-brand-600"></i>
+                    <span>Auteur Fantasy</span>
                   </span>
-                  <span class="font-bold text-slate-900">@libero_emargine</span>
+                  <span class="font-bold text-slate-900">Life of Georgia</span>
                 </div>
               </div>
 
               <div class="pt-2">
                 <a href="https://libero-multi.vercel.app/" target="_blank" rel="noopener noreferrer" class="liquid-btn w-full py-3.5 rounded-2xl bg-gradient-to-r from-brand-700 to-crimson-600 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-md">
                   <i data-lucide="external-link" class="w-4 h-4"></i>
-                  <span>Lancer Libero's Multi</span>
+                  <span>Visiter Libero's Multi</span>
                 </a>
               </div>
 
@@ -337,11 +373,116 @@
         </div>
       </section>
 
-      <!-- ================= SLIDE 2 : PROJET PHARE (LIBERO'S MULTI) ================= -->
-      <section class="carousel-slide px-4 md:px-8 py-8 flex items-center justify-center">
+      <!-- ================= SLIDE 2 : ABOUT ME & SKILLS PROGRESS BARS (FALLOW INSPIRED) ================= -->
+      <section class="carousel-slide px-4 md:px-8 py-6 flex items-center justify-center">
         <div class="max-w-6xl mx-auto w-full space-y-6">
           
-          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-4">
+          <div class="border-b border-slate-200/80 pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-700">Profil &amp; Compétences</span>
+            <h2 class="text-3xl font-black text-slate-900">À propos de moi &amp; Maîtrise Technique</h2>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Left Narrative & Signature Card -->
+            <div class="lg:col-span-6 space-y-4">
+              <div class="light-liquid-glass p-6 rounded-3xl space-y-4">
+                <h3 class="text-xl font-bold text-slate-900">Créateur de Systèmes et d'Expériences Web</h3>
+                <p class="text-slate-600 text-xs leading-relaxed">
+                  Passionné par la programmation bas niveau et les interfaces interactives modernes, je combine la rigueur de l'école Epitech (C, C++20, Rust, architecture système, sockets Unix, threads POSIX) avec la création d'applications web temps réel complètes (Node.js, Express, Socket.IO, PWA, MongoDB).
+                </p>
+                <p class="text-slate-600 text-xs leading-relaxed">
+                  En parallèle du développement, j'accorde une importance majeure au mentorat des Tek1 et à la communication digitale au sein de l'association Tekbot Epitech.
+                </p>
+
+                <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-slate-900 text-sm block">Olympe Hounkpevi (Lib)</span>
+                    <span class="text-[11px] text-slate-500">Responsable Communication Tekbot &amp; Parrain Tek1</span>
+                  </div>
+                  <div class="px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-mono font-bold">
+                    Tek3 Epitech
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Skills Progress Bars (Fallow Style) -->
+            <div class="lg:col-span-6 space-y-4">
+              <div class="light-liquid-glass p-6 rounded-3xl space-y-4">
+                <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+                  <i data-lucide="sliders" class="w-5 h-5 text-brand-700"></i>
+                  <span>Niveau de Maîtrise Technique</span>
+                </h3>
+
+                <!-- Skill Bar 1 -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-xs font-semibold">
+                    <span class="text-slate-800">C / C++ (C++17 / C++20) &amp; Systèmes POSIX</span>
+                    <span class="text-brand-700 font-mono">92%</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                    <div class="bg-gradient-to-r from-brand-600 to-brand-700 h-full rounded-full progress-bar-fill" style="width: 92%;"></div>
+                  </div>
+                </div>
+
+                <!-- Skill Bar 2 -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-xs font-semibold">
+                    <span class="text-slate-800">Web Temps Réel (Node.js, Express, Socket.IO, PWA)</span>
+                    <span class="text-brand-700 font-mono">90%</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                    <div class="bg-gradient-to-r from-brand-600 to-brand-700 h-full rounded-full progress-bar-fill" style="width: 90%;"></div>
+                  </div>
+                </div>
+
+                <!-- Skill Bar 3 -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-xs font-semibold">
+                    <span class="text-slate-800">Cryptographie (RSA, X25519, XOR, Signatures)</span>
+                    <span class="text-crimson-600 font-mono">85%</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                    <div class="bg-gradient-to-r from-crimson-500 to-crimson-600 h-full rounded-full progress-bar-fill" style="width: 85%;"></div>
+                  </div>
+                </div>
+
+                <!-- Skill Bar 4 -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-xs font-semibold">
+                    <span class="text-slate-800">Front-End &amp; UI (HTML/CSS/JS, React, Leaflet)</span>
+                    <span class="text-brand-700 font-mono">88%</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                    <div class="bg-gradient-to-r from-brand-600 to-brand-700 h-full rounded-full progress-bar-fill" style="width: 88%;"></div>
+                  </div>
+                </div>
+
+                <!-- Skill Bar 5 -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-xs font-semibold">
+                    <span class="text-slate-800">IA, Machine Learning (Classification IRM, OCR) &amp; Rust</span>
+                    <span class="text-slate-600 font-mono">78%</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                    <div class="bg-gradient-to-r from-slate-600 to-brand-600 h-full rounded-full progress-bar-fill" style="width: 78%;"></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= SLIDE 3 : PROJET PHARE (LIBERO'S MULTI) ================= -->
+      <section class="carousel-slide px-4 md:px-8 py-6 flex items-center justify-center">
+        <div class="max-w-6xl mx-auto w-full space-y-6">
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200/80 pb-3">
             <div>
               <span class="text-xs font-bold uppercase tracking-wider text-brand-700">Plateforme Web Multijoueur</span>
               <h2 class="text-3xl md:text-4xl font-black text-slate-900">Libero's Multi</h2>
@@ -362,15 +503,15 @@
               <div class="flex flex-wrap gap-2 p-1.5 rounded-2xl light-liquid-glass text-xs font-semibold">
                 <button onclick="switchLiberoTab('overview')" id="libtab-overview" class="liquid-btn px-4 py-2 rounded-xl bg-white text-brand-700 shadow-md">Architecture</button>
                 <button onclick="switchLiberoTab('games')" id="libtab-games" class="liquid-btn px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900">Catalogue Jeux</button>
-                <button onclick="switchLiberoTab('economy')" id="libtab-economy" class="liquid-btn px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900">Économie & FedaPay</button>
-                <button onclick="switchLiberoTab('admin')" id="libtab-admin" class="liquid-btn px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900">PWA & Admin</button>
+                <button onclick="switchLiberoTab('economy')" id="libtab-economy" class="liquid-btn px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900">Économie &amp; FedaPay</button>
+                <button onclick="switchLiberoTab('admin')" id="libtab-admin" class="liquid-btn px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900">PWA &amp; Admin</button>
               </div>
 
               <!-- Tab Content 1: Architecture -->
               <div id="libcontent-overview" class="libero-tab-content light-liquid-glass p-6 rounded-3xl space-y-4">
                 <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
                   <i data-lucide="cpu" class="w-5 h-5 text-brand-700"></i>
-                  <span>Architecture & Déploiement Continu</span>
+                  <span>Architecture &amp; Déploiement Continu</span>
                 </h3>
                 <p class="text-xs text-slate-600 leading-relaxed">
                   Conçu avec un front-end réactif hébergé sur Vercel et un backend Node.js / Express propulsé par Socket.IO pour la communication bidirectionnelle en temps réel à faible latence.
@@ -402,7 +543,7 @@
               <div id="libcontent-economy" class="libero-tab-content hidden light-liquid-glass p-6 rounded-3xl space-y-4">
                 <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
                   <i data-lucide="credit-card" class="w-5 h-5 text-brand-700"></i>
-                  <span>Économie Virtuelle (Libs) & Mobile Money</span>
+                  <span>Économie Virtuelle (Libs) &amp; Mobile Money</span>
                 </h3>
                 <p class="text-xs text-slate-600 leading-relaxed">
                   Système de monnaie virtuelle (Libs), paiements Mobile Money via l'API FedaPay (MTN / Moov), boutique d'items, offres flash et Pass VIP.
@@ -413,7 +554,7 @@
               <div id="libcontent-admin" class="libero-tab-content hidden light-liquid-glass p-6 rounded-3xl space-y-4">
                 <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
                   <i data-lucide="shield-alert" class="w-5 h-5 text-brand-700"></i>
-                  <span>PWA & Dashboard Administrateur</span>
+                  <span>PWA &amp; Dashboard Administrateur</span>
                 </h3>
                 <p class="text-xs text-slate-600 leading-relaxed">
                   Installation PWA native avec notifications push (web-push, VAPID). Dashboard administrateur complet : statistiques en temps réel, modération, SAV et audit.
@@ -462,33 +603,33 @@
         </div>
       </section>
 
-      <!-- ================= SLIDE 3 : PROJETS AVEC FILTRES & TERMINAL MODAL ================= -->
-      <section class="carousel-slide px-4 md:px-8 py-8 flex items-center justify-center">
+      <!-- ================= SLIDE 4 : PORTFOLIO COMPLET AVEC FILTRES (FALLOW INSPIRED) ================= -->
+      <section class="carousel-slide px-4 md:px-8 py-6 flex items-center justify-center">
         <div class="max-w-6xl mx-auto w-full space-y-6">
           
           <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <span class="text-xs font-bold uppercase tracking-wider text-brand-700">Répertoire complet</span>
-              <h2 class="text-3xl font-black text-slate-900">Projets Académiques & Personnels</h2>
+              <span class="text-xs font-bold uppercase tracking-wider text-brand-700">Répertoire des réalisations</span>
+              <h2 class="text-3xl font-black text-slate-900">Projets Académiques &amp; Personnels</h2>
             </div>
 
             <!-- Glass Filter Tabs -->
             <div class="flex flex-wrap items-center gap-1.5 p-1 rounded-2xl light-liquid-glass text-xs font-semibold">
               <button onclick="filterProjects('all')" id="btn-filter-all" class="liquid-btn px-3.5 py-1.5 rounded-xl bg-white text-brand-700 shadow-md">Tous</button>
-              <button onclick="filterProjects('web')" id="btn-filter-web" class="liquid-btn px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Web & Temps Réel</button>
+              <button onclick="filterProjects('web')" id="btn-filter-web" class="liquid-btn px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Web &amp; Temps Réel</button>
               <button onclick="filterProjects('cpp')" id="btn-filter-cpp" class="liquid-btn px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Systèmes C/C++</button>
-              <button onclick="filterProjects('ai')" id="btn-filter-ai" class="liquid-btn px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">IA & Crypto</button>
+              <button onclick="filterProjects('ai')" id="btn-filter-ai" class="liquid-btn px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">IA &amp; Crypto</button>
               <button onclick="filterProjects('pedagogy')" id="btn-filter-pedagogy" class="liquid-btn px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Pédagogie</button>
             </div>
           </div>
 
           <!-- Projects Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[480px] overflow-y-auto pr-1" id="projectsGrid">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[460px] overflow-y-auto pr-1" id="projectsGrid">
 
             <!-- Card 1: Fortnite Overlay -->
             <div class="project-card light-liquid-glass light-liquid-interactive p-5 rounded-3xl space-y-3" data-category="ai">
               <div class="flex justify-between items-start">
-                <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-blue text-brand-800 text-[10px] font-bold">OCR & IA</span>
+                <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-blue text-brand-800 text-[10px] font-bold">OCR &amp; IA</span>
                 <span class="text-[10px] text-slate-400 font-mono">Perso</span>
               </div>
               <h3 class="font-bold text-slate-900 text-base">Fortnite Overlay</h3>
@@ -532,7 +673,7 @@
             <!-- Card 5: Zappy -->
             <div class="project-card light-liquid-glass light-liquid-interactive p-5 rounded-3xl space-y-3" data-category="cpp">
               <div class="flex justify-between items-start">
-                <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-red text-crimson-700 text-[10px] font-bold">Réseau & GUI</span>
+                <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-red text-crimson-700 text-[10px] font-bold">Réseau &amp; GUI</span>
                 <button onclick="openTerminalModal('Zappy', './zappy_gui -p 4242 -h 127.0.0.1', 'Jeu en réseau avec moteur de rendu isométrique C++/SFML')" class="text-[10px] text-brand-700 font-mono underline">Console Shell</button>
               </div>
               <h3 class="font-bold text-slate-900 text-base">Zappy</h3>
@@ -576,7 +717,7 @@
             <!-- Card 9: CVRIE -->
             <div class="project-card light-liquid-glass light-liquid-interactive p-5 rounded-3xl space-y-3" data-category="ai">
               <div class="flex justify-between items-start">
-                <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-blue text-brand-800 text-[10px] font-bold">IA & Santé</span>
+                <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-blue text-brand-800 text-[10px] font-bold">IA &amp; Santé</span>
                 <span class="text-[10px] text-slate-400 font-mono">Python ML</span>
               </div>
               <h3 class="font-bold text-slate-900 text-base">CVRIE</h3>
@@ -589,143 +730,80 @@
         </div>
       </section>
 
-      <!-- ================= SLIDE 4 : COMPÉTENCES & ARCHITECTURE ================= -->
-      <section class="carousel-slide px-4 md:px-8 py-8 flex items-center justify-center">
+      <!-- ================= SLIDE 5 : COMMUNAUTÉ, ROMANS & CONTACT (FALLOW INSPIRED) ================= -->
+      <section class="carousel-slide px-4 md:px-8 py-6 flex items-center justify-center">
         <div class="max-w-6xl mx-auto w-full space-y-6">
           
           <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-brand-700">Compétences techniques</span>
-            <h2 class="text-3xl font-black text-slate-900">Langages, Systèmes & Outils</h2>
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-700">Engagement &amp; Me Contacter</span>
+            <h2 class="text-3xl font-black text-slate-900">Associatif, Écriture &amp; Contact</h2>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-            <!-- Category 1 -->
-            <div class="light-liquid-glass p-6 rounded-3xl space-y-4">
-              <div class="w-12 h-12 rounded-2xl light-liquid-glass-blue flex items-center justify-center text-brand-700 font-bold">
-                <i data-lucide="code" class="w-6 h-6"></i>
+            <!-- Left 2 Cards -->
+            <div class="lg:col-span-6 space-y-4">
+              <div class="light-liquid-glass p-6 rounded-3xl space-y-4">
+                <div class="flex items-center space-x-3">
+                  <div class="w-10 h-10 rounded-2xl light-liquid-glass-blue flex items-center justify-center text-brand-700 font-bold">
+                    <i data-lucide="users" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-slate-900 text-base">Tekbot Epitech &amp; Parrainage</h3>
+                    <span class="text-[11px] text-slate-500">Responsable Communication</span>
+                  </div>
+                </div>
+                <p class="text-slate-600 text-xs leading-relaxed">
+                  Organisation de la communication et valorisation des initiatives de l'association Tekbot Epitech. Mentorat et parrainage des étudiants Tek1 pour leur transmission méthodologique.
+                </p>
               </div>
-              <h3 class="font-bold text-slate-900 text-base">C / C++ & Bas Niveau</h3>
-              <ul class="space-y-2 text-xs text-slate-700">
-                <li class="flex justify-between items-center p-2.5 rounded-2xl bg-white/70 border border-slate-100">
-                  <span class="font-semibold">C & C++ (C++17/20)</span>
-                  <span class="font-mono text-brand-700 font-bold">Avancé</span>
-                </li>
-                <li class="flex justify-between items-center p-2.5 rounded-2xl bg-white/70 border border-slate-100">
-                  <span class="font-semibold">Rust & Python</span>
-                  <span class="font-mono text-slate-500">Pratique</span>
-                </li>
-                <li class="flex justify-between items-center p-2.5 rounded-2xl bg-white/70 border border-slate-100">
-                  <span class="font-semibold">POSIX Threads & Concurrence</span>
-                  <span class="font-mono text-brand-700 font-bold">Système</span>
-                </li>
-                <li class="flex justify-between items-center p-2.5 rounded-2xl bg-white/70 border border-slate-100">
-                  <span class="font-semibold">Sockets TCP & Unix</span>
-                  <span class="font-mono text-slate-500">Réseau</span>
-                </li>
-              </ul>
+
+              <div class="light-liquid-glass-red p-6 rounded-3xl space-y-4 border border-crimson-200">
+                <div class="flex items-center space-x-3">
+                  <div class="w-10 h-10 rounded-2xl bg-white/80 flex items-center justify-center text-crimson-600 font-bold shadow-sm">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-slate-900 text-base">Saga Litteraire : Life of Georgia</h3>
+                    <span class="text-[11px] text-crimson-700 font-semibold">Roman Fantasy</span>
+                  </div>
+                </div>
+                <p class="text-slate-600 text-xs leading-relaxed">
+                  Écriture d'une série de romans fantasy en plusieurs tomes, combinant récits narratifs structurés et univers imaginaires.
+                </p>
+              </div>
             </div>
 
-            <!-- Category 2 -->
-            <div class="light-liquid-glass p-6 rounded-3xl space-y-4">
-              <div class="w-12 h-12 rounded-2xl light-liquid-glass-red flex items-center justify-center text-crimson-600 font-bold">
-                <i data-lucide="globe" class="w-6 h-6"></i>
+            <!-- Right Contact Card (Fallow Inspired Form) -->
+            <div class="lg:col-span-6">
+              <div class="light-liquid-glass p-6 rounded-3xl space-y-4 border border-white/90">
+                <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+                  <i data-lucide="send" class="w-5 h-5 text-brand-700"></i>
+                  <span>Me Lancer un Message</span>
+                </h3>
+
+                <form onsubmit="handleFormSubmit(event)" class="space-y-3 text-xs">
+                  <div>
+                    <label class="block text-slate-700 font-semibold mb-1">Votre Nom / Entreprise</label>
+                    <input type="text" required placeholder="Ex: Jean Dupont" class="w-full bg-white/80 border border-slate-200 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-brand-600">
+                  </div>
+
+                  <div>
+                    <label class="block text-slate-700 font-semibold mb-1">Votre Email</label>
+                    <input type="email" required placeholder="nom@domaine.com" class="w-full bg-white/80 border border-slate-200 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-brand-600">
+                  </div>
+
+                  <div>
+                    <label class="block text-slate-700 font-semibold mb-1">Message</label>
+                    <textarea rows="3" required placeholder="Votre message ou proposition d'échange..." class="w-full bg-white/80 border border-slate-200 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-brand-600"></textarea>
+                  </div>
+
+                  <button type="submit" id="formSubmitBtn" class="liquid-btn w-full py-3 rounded-xl bg-gradient-to-r from-brand-700 to-crimson-600 text-white font-bold uppercase tracking-wider text-xs flex items-center justify-center space-x-2 shadow-md">
+                    <span>Envoyer le Message</span>
+                    <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                  </button>
+                </form>
               </div>
-              <h3 class="font-bold text-slate-900 text-base">Web & Temps Réel</h3>
-              <ul class="space-y-2 text-xs text-slate-700">
-                <li class="flex justify-between items-center p-2.5 rounded-2xl bg-white/70 border border-slate-100">
-                  <span class="font-semibold">HTML/CSS, JS, React</span>
-                  <span class="font-mono text-crimson-600 font-bold">Front-end</span>
-                </li>
-                <li class="flex justify-between items-center p-2.5 rounded-2xl bg-white/70 border border-slate-100">
-                  <span class="font-semibold">Node.js, Express, Socket.IO</span>
-                  <span class="font-mono text-brand-700 font-bold">Back-end</span>
-                </li>
-                <li class="flex justify-between items-center p-2.5 rounded-2xl bg-white/70 border border-slate-100">
-                  <span class="font-semibold">MongoDB Atlas</span>
-                  <span class="font-mono text-slate-500">NoSQL</span>
-                </li>
-                <li class="flex justify-between items-center p-2.5 rounded-2xl bg-white/70 border border-slate-100">
-                  <span class="font-semibold">FedaPay Mobile Money</span>
-                  <span class="font-mono text-crimson-600 font-bold">Paiement</span>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Category 3 -->
-            <div class="light-liquid-glass p-6 rounded-3xl space-y-4">
-              <div class="w-12 h-12 rounded-2xl light-liquid-glass-blue flex items-center justify-center text-brand-700 font-bold">
-                <i data-lucide="shield" class="w-6 h-6"></i>
-              </div>
-              <h3 class="font-bold text-slate-900 text-base">Architecture & Security</h3>
-              <ul class="space-y-2 text-xs text-slate-700">
-                <li class="flex justify-between items-center p-2.5 rounded-2xl bg-white/70 border border-slate-100">
-                  <span class="font-semibold">Design Patterns (Factory, Decorator)</span>
-                  <span class="font-mono text-slate-500">POO</span>
-                </li>
-                <li class="flex justify-between items-center p-2.5 rounded-2xl bg-white/70 border border-slate-100">
-                  <span class="font-semibold">Cryptographie (RSA, X25519)</span>
-                  <span class="font-mono text-brand-700 font-bold">Crypto</span>
-                </li>
-                <li class="flex justify-between items-center p-2.5 rounded-2xl bg-white/70 border border-slate-100">
-                  <span class="font-semibold">Machine Learning & OCR</span>
-                  <span class="font-mono text-slate-500">IA</span>
-                </li>
-                <li class="flex justify-between items-center p-2.5 rounded-2xl bg-white/70 border border-slate-100">
-                  <span class="font-semibold">Git, Notion, CapCut, OBS</span>
-                  <span class="font-mono text-slate-500">Outils</span>
-                </li>
-              </ul>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      <!-- ================= SLIDE 5 : PARCOURS, COMMUNAUTÉ & CRÉATION ================= -->
-      <section class="carousel-slide px-4 md:px-8 py-8 flex items-center justify-center">
-        <div class="max-w-6xl mx-auto w-full space-y-6">
-          
-          <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-brand-700">Engagement & Écriture</span>
-            <h2 class="text-3xl font-black text-slate-900">Vie Associative & Roman Fantasy</h2>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-            <!-- Card 1 -->
-            <div class="light-liquid-glass p-6 rounded-3xl space-y-4">
-              <div class="w-12 h-12 rounded-2xl light-liquid-glass-blue flex items-center justify-center text-brand-700 font-bold">
-                <i data-lucide="users" class="w-6 h-6"></i>
-              </div>
-              <h3 class="font-bold text-slate-900 text-base">Tekbot Epitech & Mentorat</h3>
-              <p class="text-slate-600 text-xs leading-relaxed">
-                Responsable de la communication de l'association **Tekbot Epitech**. Également parrain d'étudiants Tek1 pour l'accompagnement pédagogique et la préparation des piscines.
-              </p>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="light-liquid-glass-red p-6 rounded-3xl space-y-4">
-              <div class="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-crimson-600 font-bold shadow-sm">
-                <i data-lucide="book-open" class="w-6 h-6"></i>
-              </div>
-              <h3 class="font-bold text-slate-900 text-base">Roman : Life of Georgia</h3>
-              <p class="text-slate-600 text-xs leading-relaxed">
-                Auteur d'une saga de romans fantasy en plusieurs tomes, associant construction d'univers narratifs complexes et écriture créative.
-              </p>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="light-liquid-glass p-6 rounded-3xl space-y-4">
-              <div class="w-12 h-12 rounded-2xl light-liquid-glass-blue flex items-center justify-center text-brand-700 font-bold">
-                <i data-lucide="clapperboard" class="w-6 h-6"></i>
-              </div>
-              <h3 class="font-bold text-slate-900 text-base">Création & MedTech Pitch</h3>
-              <ul class="text-xs text-slate-600 space-y-2">
-                <li>&bull; **@libero_emargine** : Création de contenu sur TikTok/YouTube (montages synchronisés & streams gaming).</li>
-                <li>&bull; **MediTrack** : Réalisation du pitch deck investisseurs pour une application d'historique médical en Afrique de l'Ouest.</li>
-              </ul>
             </div>
 
           </div>
@@ -751,19 +829,19 @@
       </div>
 
       <div class="text-xs text-slate-500 hidden sm:block font-medium">
-        Naviguez avec les flèches du clavier <span class="font-mono bg-white/70 px-1.5 py-0.5 rounded border">←</span> <span class="font-mono bg-white/70 px-1.5 py-0.5 rounded border">→</span>
+        Naviguez avec les flèches du clavier <span class="font-mono bg-white/80 px-1.5 py-0.5 rounded border">←</span> <span class="font-mono bg-white/80 px-1.5 py-0.5 rounded border">→</span>
       </div>
 
       <div>
         <button onclick="openLegalModal()" class="text-xs text-slate-600 hover:text-crimson-600 font-semibold underline">
-          Politiques & Mentions Légales
+          Politiques &amp; Mentions Légales
         </button>
       </div>
 
     </div>
   </footer>
 
-  <!-- TERMINAL SHELL MODAL (FOR EPITECH C/C++ PROJECTS) -->
+  <!-- TERMINAL SHELL MODAL -->
   <div id="terminalModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md hidden items-center justify-center p-4">
     <div class="bg-[#0c0d14] text-slate-100 rounded-3xl max-w-xl w-full p-6 space-y-4 shadow-2xl border border-white/20 font-mono">
       <div class="flex items-center justify-between border-b border-white/10 pb-3">
@@ -800,7 +878,7 @@
       <div class="flex items-center justify-between border-b border-slate-200 pb-4">
         <h3 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
           <i data-lucide="shield-check" class="w-5 h-5 text-brand-700"></i>
-          <span>Mentions Légales & Politique de Confidentialité</span>
+          <span>Mentions Légales &amp; Politique de Confidentialité</span>
         </h3>
         <button onclick="closeLegalModal()" class="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors">
           <i data-lucide="x" class="w-5 h-5"></i>
@@ -960,6 +1038,22 @@
       if (modal) {
         modal.classList.remove('flex');
         modal.classList.add('hidden');
+      }
+    }
+
+    // Contact Form Handler
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('formSubmitBtn');
+      if (btn) {
+        btn.innerText = "Message Envoyé ! Merci.";
+        btn.className = "liquid-btn w-full py-3 rounded-xl bg-emerald-600 text-white font-bold uppercase tracking-wider text-xs flex items-center justify-center space-x-2 shadow-md";
+        setTimeout(() => {
+          btn.innerHTML = `<span>Envoyer le Message</span><i data-lucide="send" class="w-3.5 h-3.5"></i>`;
+          btn.className = "liquid-btn w-full py-3 rounded-xl bg-gradient-to-r from-brand-700 to-crimson-600 text-white font-bold uppercase tracking-wider text-xs flex items-center justify-center space-x-2 shadow-md";
+          lucide.createIcons();
+          e.target.reset();
+        }, 3000);
       }
     }
 
