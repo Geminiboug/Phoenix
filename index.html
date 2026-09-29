@@ -43,7 +43,6 @@
           animation: {
             'float-slow': 'float 8s ease-in-out infinite',
             'float-reverse': 'floatRev 10s ease-in-out infinite',
-            'pulse-glow': 'pulseGlow 3s ease-in-out infinite alternate',
           },
           keyframes: {
             float: {
@@ -61,7 +60,7 @@
   </script>
 
   <style>
-    /* AMBIENT MESH BACKGROUND WITH DYNAMIC LIQUID BLOBS (FALLOW INSPIRED + GLASS) */
+    /* AMBIENT MESH BACKGROUND WITH DYNAMIC LIQUID BLOBS */
     body {
       background-color: #f8fafc;
       background-image: 
@@ -75,10 +74,10 @@
 
     /* LIGHT LIQUID GLASS SPECULAR SYSTEM */
     .light-liquid-glass {
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.78);
       backdrop-filter: blur(28px) saturate(190%) contrast(102%);
       -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(102%);
-      border: 1px solid rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.92);
       box-shadow: 
         inset 0 2px 2px 0 rgba(255, 255, 255, 0.95),
         inset 0 -1.5px 2px 0 rgba(148, 163, 184, 0.25),
@@ -88,7 +87,7 @@
     }
 
     .light-liquid-glass-blue {
-      background: rgba(239, 246, 255, 0.75);
+      background: rgba(239, 246, 255, 0.78);
       backdrop-filter: blur(30px) saturate(200%);
       -webkit-backdrop-filter: blur(30px) saturate(200%);
       border: 1px solid rgba(191, 219, 254, 0.9);
@@ -99,7 +98,7 @@
     }
 
     .light-liquid-glass-red {
-      background: rgba(254, 242, 242, 0.75);
+      background: rgba(254, 242, 242, 0.78);
       backdrop-filter: blur(30px) saturate(200%);
       -webkit-backdrop-filter: blur(30px) saturate(200%);
       border: 1px solid rgba(254, 202, 202, 0.9);
@@ -107,15 +106,6 @@
         inset 0 2px 2px 0 rgba(255, 255, 255, 0.95),
         inset 0 -1.5px 2px 0 rgba(220, 38, 38, 0.18),
         0 20px 45px -10px rgba(220, 38, 38, 0.12);
-    }
-
-    .light-liquid-interactive:hover {
-      transform: translateY(-4px) scale(1.008);
-      border-color: rgba(37, 99, 235, 0.8) !important;
-      box-shadow: 
-        inset 0 2px 3px 0 rgba(255, 255, 255, 1),
-        0 30px 60px -12px rgba(37, 99, 235, 0.22),
-        0 0 20px rgba(59, 130, 246, 0.25) !important;
     }
 
     .liquid-btn {
@@ -127,6 +117,68 @@
     }
     .liquid-btn:active {
       transform: scale(0.95);
+    }
+
+    /* FALLOW NAVIGATION STYLES */
+    .fallow-nav-link {
+      position: relative;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #475569;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .fallow-nav-link:hover, .fallow-nav-link.active {
+      color: #1d4ed8;
+    }
+    .fallow-nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 1rem;
+      right: 1rem;
+      height: 2.5px;
+      background: #1d4ed8;
+      border-radius: 9999px;
+    }
+
+    /* OFFCANVAS SIDEBAR MENU */
+    .offcanvas-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 320px;
+      max-width: 85vw;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-left: 1px solid rgba(226, 232, 240, 0.8);
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -20px 0 50px rgba(15, 23, 42, 0.15);
+    }
+    .offcanvas-drawer.open {
+      transform: translateX(0);
+    }
+
+    .offcanvas-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .offcanvas-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     /* CAROUSEL SLIDE CONTAINER */
@@ -146,11 +198,6 @@
       background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #dc2626 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-
-    /* Progress bar animation */
-    .progress-bar-fill {
-      transition: width 1s ease-in-out;
     }
 
     /* Custom Scrollbar */
@@ -176,8 +223,8 @@
   <div class="fixed top-20 left-10 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none animate-float-slow z-0"></div>
   <div class="fixed bottom-20 right-10 w-96 h-96 bg-crimson-500/10 rounded-full blur-3xl pointer-events-none animate-float-reverse z-0"></div>
 
-  <!-- FALLOW STYLE TOP CONTACT BAR -->
-  <div class="bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-4 md:px-8 py-2 z-50 text-xs text-slate-600">
+  <!-- FALLOW TOP BAR (CONTACT & SOCIALS) -->
+  <div class="bg-white/90 backdrop-blur-md border-b border-slate-200/80 px-4 md:px-8 py-2 z-50 text-xs text-slate-600">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       <div class="flex items-center space-x-6">
         <span class="flex items-center space-x-2">
@@ -208,11 +255,11 @@
     </div>
   </div>
 
-  <!-- FLOATING SPATIAL GLASS NAVBAR -->
-  <header class="sticky top-2 z-50 px-4 md:px-8 max-w-7xl mx-auto w-full">
-    <div class="light-liquid-glass rounded-full px-5 py-3 flex items-center justify-between shadow-xl">
+  <!-- FALLOW MAIN STICKY HEADER & NAVIGATION SYSTEM -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/80 shadow-sm px-4 md:px-8 py-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
       
-      <!-- Logo Identity -->
+      <!-- Left: Logo & Identity -->
       <a href="#" onclick="goToSlide(0); return false;" class="flex items-center space-x-3 group">
         <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-700 via-brand-600 to-crimson-600 p-[2px] shadow-md group-hover:scale-105 transition-transform flex items-center justify-center">
           <div class="w-full h-full bg-white rounded-full flex items-center justify-center font-bold text-brand-700 text-sm">
@@ -220,53 +267,136 @@
           </div>
         </div>
         <div>
-          <span class="font-extrabold text-base text-slate-900 tracking-tight flex items-center space-x-1">
+          <span class="font-black text-base text-slate-900 tracking-tight flex items-center space-x-1">
             <span>Olympe Hounkpevi</span>
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-100/80 text-brand-800 font-bold border border-brand-200">Lib</span>
           </span>
-          <span class="text-[11px] text-slate-500 block font-medium">Développeur &amp; Créateur</span>
+          <span class="text-[11px] text-slate-500 block font-medium">Développeur Logiciel &amp; Créateur</span>
         </div>
       </a>
 
-      <!-- Carousel Glass Tabs -->
-      <nav class="hidden lg:flex items-center space-x-1 bg-white/40 p-1 rounded-full border border-white/60 text-xs font-semibold backdrop-blur-md">
-        <button onclick="goToSlide(0)" id="nav-dot-0" class="slide-nav-btn px-4 py-1.5 rounded-full bg-white text-brand-700 shadow-md transition-all">
-          01. Accueil
+      <!-- Center: Desktop Main Menu (Fallow Style) -->
+      <nav class="hidden lg:flex items-center space-x-1">
+        <button onclick="goToSlide(0)" id="nav-item-0" class="fallow-nav-link active">
+          <span>Accueil</span>
         </button>
-        <button onclick="goToSlide(1)" id="nav-dot-1" class="slide-nav-btn px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 transition-all">
-          02. À propos &amp; Skills
+        <button onclick="goToSlide(1)" id="nav-item-1" class="fallow-nav-link">
+          <span>À propos &amp; Skills</span>
         </button>
-        <button onclick="goToSlide(2)" id="nav-dot-2" class="slide-nav-btn px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 transition-all">
-          03. Projet Phare
+        <button onclick="goToSlide(2)" id="nav-item-2" class="fallow-nav-link">
+          <span>Projet Phare</span>
         </button>
-        <button onclick="goToSlide(3)" id="nav-dot-3" class="slide-nav-btn px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 transition-all">
-          04. Portfolio
+        <button onclick="goToSlide(3)" id="nav-item-3" class="fallow-nav-link">
+          <span>Portfolio</span>
         </button>
-        <button onclick="goToSlide(4)" id="nav-dot-4" class="slide-nav-btn px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 transition-all">
-          05. Communauté &amp; Roman
+        <button onclick="goToSlide(4)" id="nav-item-4" class="fallow-nav-link">
+          <span>Communauté &amp; Contact</span>
         </button>
       </nav>
 
-      <!-- CTA Button (Fallow Inspired Let's Talk) -->
-      <div class="flex items-center space-x-2">
-        <button onclick="openLegalModal()" class="liquid-btn px-3.5 py-1.5 rounded-full light-liquid-glass text-xs font-semibold text-slate-700 hover:text-crimson-600 border border-white/80 transition-colors">
+      <!-- Right: Action CTA & Mobile Hamburger -->
+      <div class="flex items-center space-x-3">
+        <button onclick="openLegalModal()" class="hidden sm:inline-flex liquid-btn px-3.5 py-1.5 rounded-full light-liquid-glass text-xs font-semibold text-slate-700 hover:text-crimson-600 border border-slate-200 transition-colors">
           Mentions Légales
         </button>
-        <button onclick="goToSlide(4)" class="liquid-btn px-4 py-2 rounded-full bg-gradient-to-r from-brand-700 to-crimson-600 text-white text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 shadow-md">
+        
+        <!-- Fallow "Let's Talk / Me Contacter" CTA Button -->
+        <button onclick="goToSlide(4)" class="liquid-btn px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-700 to-crimson-600 text-white text-xs font-bold uppercase tracking-wider flex items-center space-x-2 shadow-md">
           <span>Me Contacter</span>
-          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Mobile Hamburger Button (Fallow #nav-opn-btn) -->
+        <button onclick="openOffcanvas()" id="nav-opn-btn" class="lg:hidden p-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-800 transition-colors" title="Ouvrir le Menu">
+          <i class="fa-solid fa-bars text-lg"></i>
         </button>
       </div>
 
     </div>
   </header>
 
-  <!-- MAIN CAROUSEL WRAPPER -->
-  <main class="flex-1 relative z-10 overflow-hidden pt-4">
-    
-    <div id="carouselTrack" class="carousel-container min-h-[calc(100vh-170px)]">
+  <!-- FALLOW MOBILE OFFCANVAS DRAWER SIDEBAR (#offcanvas-nav) -->
+  <div id="offcanvasBackdrop" onclick="closeOffcanvas()" class="offcanvas-backdrop"></div>
+  
+  <aside id="offcanvasNav" class="offcanvas-drawer flex flex-col justify-between p-6">
+    <!-- Header inside drawer -->
+    <div class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-brand-700 to-crimson-600 p-[2px]">
+            <div class="w-full h-full bg-white rounded-full flex items-center justify-center font-bold text-brand-700 text-xs">
+              OH
+            </div>
+          </div>
+          <span class="font-bold text-slate-900 text-sm">Navigation</span>
+        </div>
 
-      <!-- ================= SLIDE 1 : HERO SECTION (FALLOW + GLASS) ================= -->
+        <button onclick="closeOffcanvas()" id="nav-cls-btn" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+          <i class="fa-solid fa-xmark text-base"></i>
+        </button>
+      </div>
+
+      <!-- Offcanvas Menu Navigation Links -->
+      <ul class="space-y-2 text-sm font-semibold">
+        <li>
+          <button onclick="goToSlide(0); closeOffcanvas();" id="mob-nav-0" class="w-full text-left p-3 rounded-xl hover:bg-brand-50 hover:text-brand-700 flex items-center justify-between transition-colors">
+            <span>01. Accueil</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </button>
+        </li>
+        <li>
+          <button onclick="goToSlide(1); closeOffcanvas();" id="mob-nav-1" class="w-full text-left p-3 rounded-xl hover:bg-brand-50 hover:text-brand-700 flex items-center justify-between transition-colors">
+            <span>02. À propos &amp; Skills</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </button>
+        </li>
+        <li>
+          <button onclick="goToSlide(2); closeOffcanvas();" id="mob-nav-2" class="w-full text-left p-3 rounded-xl hover:bg-brand-50 hover:text-brand-700 flex items-center justify-between transition-colors">
+            <span>03. Projet Phare</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </button>
+        </li>
+        <li>
+          <button onclick="goToSlide(3); closeOffcanvas();" id="mob-nav-3" class="w-full text-left p-3 rounded-xl hover:bg-brand-50 hover:text-brand-700 flex items-center justify-between transition-colors">
+            <span>04. Portfolio</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </button>
+        </li>
+        <li>
+          <button onclick="goToSlide(4); closeOffcanvas();" id="mob-nav-4" class="w-full text-left p-3 rounded-xl hover:bg-brand-50 hover:text-brand-700 flex items-center justify-between transition-colors">
+            <span>05. Communauté &amp; Contact</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Footer inside offcanvas drawer -->
+    <div class="space-y-4 border-t border-slate-200 pt-4">
+      <button onclick="openLegalModal(); closeOffcanvas();" class="w-full py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:text-crimson-600">
+        Mentions Légales &amp; RGPD
+      </button>
+
+      <div class="flex items-center justify-center space-x-4 text-slate-600">
+        <a href="https://github.com/mahougnon-olympe" target="_blank" class="p-2 rounded-full bg-slate-100 hover:bg-brand-50 hover:text-brand-700">
+          <i class="fa-brands fa-github text-base"></i>
+        </a>
+        <a href="https://tiktok.com/@libero_emargine" target="_blank" class="p-2 rounded-full bg-slate-100 hover:bg-crimson-50 hover:text-crimson-600">
+          <i class="fa-brands fa-tiktok text-base"></i>
+        </a>
+        <a href="https://youtube.com/@libero_emargine" target="_blank" class="p-2 rounded-full bg-slate-100 hover:bg-crimson-50 hover:text-crimson-600">
+          <i class="fa-brands fa-youtube text-base"></i>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CAROUSEL WRAPPER -->
+  <main class="flex-1 relative z-10 overflow-hidden pt-2">
+    
+    <div id="carouselTrack" class="carousel-container min-h-[calc(100vh-180px)]">
+
+      <!-- ================= SLIDE 1 : HERO SECTION ================= -->
       <section class="carousel-slide px-4 md:px-8 py-6 flex items-center justify-center">
         <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
@@ -373,7 +503,7 @@
         </div>
       </section>
 
-      <!-- ================= SLIDE 2 : ABOUT ME & SKILLS PROGRESS BARS (FALLOW INSPIRED) ================= -->
+      <!-- ================= SLIDE 2 : ABOUT ME & SKILLS PROGRESS BARS ================= -->
       <section class="carousel-slide px-4 md:px-8 py-6 flex items-center justify-center">
         <div class="max-w-6xl mx-auto w-full space-y-6">
           
@@ -407,7 +537,7 @@
               </div>
             </div>
 
-            <!-- Right Skills Progress Bars (Fallow Style) -->
+            <!-- Right Skills Progress Bars -->
             <div class="lg:col-span-6 space-y-4">
               <div class="light-liquid-glass p-6 rounded-3xl space-y-4">
                 <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
@@ -415,7 +545,6 @@
                   <span>Niveau de Maîtrise Technique</span>
                 </h3>
 
-                <!-- Skill Bar 1 -->
                 <div class="space-y-1">
                   <div class="flex justify-between text-xs font-semibold">
                     <span class="text-slate-800">C / C++ (C++17 / C++20) &amp; Systèmes POSIX</span>
@@ -426,7 +555,6 @@
                   </div>
                 </div>
 
-                <!-- Skill Bar 2 -->
                 <div class="space-y-1">
                   <div class="flex justify-between text-xs font-semibold">
                     <span class="text-slate-800">Web Temps Réel (Node.js, Express, Socket.IO, PWA)</span>
@@ -437,7 +565,6 @@
                   </div>
                 </div>
 
-                <!-- Skill Bar 3 -->
                 <div class="space-y-1">
                   <div class="flex justify-between text-xs font-semibold">
                     <span class="text-slate-800">Cryptographie (RSA, X25519, XOR, Signatures)</span>
@@ -448,7 +575,6 @@
                   </div>
                 </div>
 
-                <!-- Skill Bar 4 -->
                 <div class="space-y-1">
                   <div class="flex justify-between text-xs font-semibold">
                     <span class="text-slate-800">Front-End &amp; UI (HTML/CSS/JS, React, Leaflet)</span>
@@ -459,7 +585,6 @@
                   </div>
                 </div>
 
-                <!-- Skill Bar 5 -->
                 <div class="space-y-1">
                   <div class="flex justify-between text-xs font-semibold">
                     <span class="text-slate-800">IA, Machine Learning (Classification IRM, OCR) &amp; Rust</span>
@@ -496,10 +621,9 @@
 
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-            <!-- Left: Interactive Spatial Glass Tabs & Details -->
+            <!-- Left: Tabs -->
             <div class="lg:col-span-7 space-y-4">
               
-              <!-- Tab Selector -->
               <div class="flex flex-wrap gap-2 p-1.5 rounded-2xl light-liquid-glass text-xs font-semibold">
                 <button onclick="switchLiberoTab('overview')" id="libtab-overview" class="liquid-btn px-4 py-2 rounded-xl bg-white text-brand-700 shadow-md">Architecture</button>
                 <button onclick="switchLiberoTab('games')" id="libtab-games" class="liquid-btn px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900">Catalogue Jeux</button>
@@ -507,7 +631,6 @@
                 <button onclick="switchLiberoTab('admin')" id="libtab-admin" class="liquid-btn px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900">PWA &amp; Admin</button>
               </div>
 
-              <!-- Tab Content 1: Architecture -->
               <div id="libcontent-overview" class="libero-tab-content light-liquid-glass p-6 rounded-3xl space-y-4">
                 <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
                   <i data-lucide="cpu" class="w-5 h-5 text-brand-700"></i>
@@ -528,7 +651,6 @@
                 </div>
               </div>
 
-              <!-- Tab Content 2: Games -->
               <div id="libcontent-games" class="libero-tab-content hidden light-liquid-glass p-6 rounded-3xl space-y-4">
                 <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
                   <i data-lucide="gamepad-2" class="w-5 h-5 text-crimson-600"></i>
@@ -539,7 +661,6 @@
                 </p>
               </div>
 
-              <!-- Tab Content 3: Economy -->
               <div id="libcontent-economy" class="libero-tab-content hidden light-liquid-glass p-6 rounded-3xl space-y-4">
                 <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
                   <i data-lucide="credit-card" class="w-5 h-5 text-brand-700"></i>
@@ -550,7 +671,6 @@
                 </p>
               </div>
 
-              <!-- Tab Content 4: Admin -->
               <div id="libcontent-admin" class="libero-tab-content hidden light-liquid-glass p-6 rounded-3xl space-y-4">
                 <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
                   <i data-lucide="shield-alert" class="w-5 h-5 text-brand-700"></i>
@@ -563,7 +683,7 @@
 
             </div>
 
-            <!-- Right: Live Deployment Card -->
+            <!-- Right: Live Card -->
             <div class="lg:col-span-5">
               <div class="light-liquid-glass-blue p-6 rounded-3xl space-y-5 border border-brand-200">
                 <div class="flex items-center justify-between">
@@ -603,7 +723,7 @@
         </div>
       </section>
 
-      <!-- ================= SLIDE 4 : PORTFOLIO COMPLET AVEC FILTRES (FALLOW INSPIRED) ================= -->
+      <!-- ================= SLIDE 4 : PORTFOLIO COMPLET ================= -->
       <section class="carousel-slide px-4 md:px-8 py-6 flex items-center justify-center">
         <div class="max-w-6xl mx-auto w-full space-y-6">
           
@@ -613,7 +733,6 @@
               <h2 class="text-3xl font-black text-slate-900">Projets Académiques &amp; Personnels</h2>
             </div>
 
-            <!-- Glass Filter Tabs -->
             <div class="flex flex-wrap items-center gap-1.5 p-1 rounded-2xl light-liquid-glass text-xs font-semibold">
               <button onclick="filterProjects('all')" id="btn-filter-all" class="liquid-btn px-3.5 py-1.5 rounded-xl bg-white text-brand-700 shadow-md">Tous</button>
               <button onclick="filterProjects('web')" id="btn-filter-web" class="liquid-btn px-3.5 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Web &amp; Temps Réel</button>
@@ -623,10 +742,8 @@
             </div>
           </div>
 
-          <!-- Projects Grid -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[460px] overflow-y-auto pr-1" id="projectsGrid">
 
-            <!-- Card 1: Fortnite Overlay -->
             <div class="project-card light-liquid-glass light-liquid-interactive p-5 rounded-3xl space-y-3" data-category="ai">
               <div class="flex justify-between items-start">
                 <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-blue text-brand-800 text-[10px] font-bold">OCR &amp; IA</span>
@@ -637,7 +754,6 @@
               <div class="pt-2 text-xs font-mono text-slate-500">Stack : Python, OCR</div>
             </div>
 
-            <!-- Card 2: Kemet Nav -->
             <div class="project-card light-liquid-glass light-liquid-interactive p-5 rounded-3xl space-y-3" data-category="web">
               <div class="flex justify-between items-start">
                 <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-blue text-brand-800 text-[10px] font-bold">Cartographie</span>
@@ -648,7 +764,6 @@
               <div class="pt-2 text-xs font-mono text-slate-500">Stack : React, Leaflet</div>
             </div>
 
-            <!-- Card 3: Guide Piscine Tek1 -->
             <div class="project-card light-liquid-glass light-liquid-interactive p-5 rounded-3xl space-y-3" data-category="pedagogy">
               <div class="flex justify-between items-start">
                 <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-red text-crimson-700 text-[10px] font-bold">Mentorat</span>
@@ -659,7 +774,6 @@
               <div class="pt-2 text-xs font-mono text-slate-500">Stack : HTML/CSS, GitHub Pages</div>
             </div>
 
-            <!-- Card 4: Site d'apprentissage S5 -->
             <div class="project-card light-liquid-glass light-liquid-interactive p-5 rounded-3xl space-y-3" data-category="pedagogy">
               <div class="flex justify-between items-start">
                 <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-blue text-brand-800 text-[10px] font-bold">Tek3 Prep</span>
@@ -670,7 +784,6 @@
               <div class="pt-2 text-xs font-mono text-slate-500">Stack : JS Vanilla, localStorage</div>
             </div>
 
-            <!-- Card 5: Zappy -->
             <div class="project-card light-liquid-glass light-liquid-interactive p-5 rounded-3xl space-y-3" data-category="cpp">
               <div class="flex justify-between items-start">
                 <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-red text-crimson-700 text-[10px] font-bold">Réseau &amp; GUI</span>
@@ -681,7 +794,6 @@
               <div class="pt-2 text-xs font-mono text-slate-500">Stack : C, Rust, C++/SFML</div>
             </div>
 
-            <!-- Card 6: Plazza -->
             <div class="project-card light-liquid-glass light-liquid-interactive p-5 rounded-3xl space-y-3" data-category="cpp">
               <div class="flex justify-between items-start">
                 <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-blue text-brand-800 text-[10px] font-bold">Concurrence</span>
@@ -692,7 +804,6 @@
               <div class="pt-2 text-xs font-mono text-slate-500">Stack : C++20, Sockets Unix</div>
             </div>
 
-            <!-- Card 7: Raytracer -->
             <div class="project-card light-liquid-glass light-liquid-interactive p-5 rounded-3xl space-y-3" data-category="cpp">
               <div class="flex justify-between items-start">
                 <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-blue text-brand-800 text-[10px] font-bold">3D Rendering</span>
@@ -703,7 +814,6 @@
               <div class="pt-2 text-xs font-mono text-slate-500">Stack : C++20</div>
             </div>
 
-            <!-- Card 8: my_pgp -->
             <div class="project-card light-liquid-glass light-liquid-interactive p-5 rounded-3xl space-y-3" data-category="ai">
               <div class="flex justify-between items-start">
                 <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-red text-crimson-700 text-[10px] font-bold">Cryptographie</span>
@@ -714,7 +824,6 @@
               <div class="pt-2 text-xs font-mono text-slate-500">Stack : C++, RSA, X25519</div>
             </div>
 
-            <!-- Card 9: CVRIE -->
             <div class="project-card light-liquid-glass light-liquid-interactive p-5 rounded-3xl space-y-3" data-category="ai">
               <div class="flex justify-between items-start">
                 <span class="px-2.5 py-0.5 rounded-full light-liquid-glass-blue text-brand-800 text-[10px] font-bold">IA &amp; Santé</span>
@@ -730,7 +839,7 @@
         </div>
       </section>
 
-      <!-- ================= SLIDE 5 : COMMUNAUTÉ, ROMANS & CONTACT (FALLOW INSPIRED) ================= -->
+      <!-- ================= SLIDE 5 : COMMUNAUTÉ, ROMAN & CONTACT ================= -->
       <section class="carousel-slide px-4 md:px-8 py-6 flex items-center justify-center">
         <div class="max-w-6xl mx-auto w-full space-y-6">
           
@@ -741,7 +850,6 @@
 
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-            <!-- Left 2 Cards -->
             <div class="lg:col-span-6 space-y-4">
               <div class="light-liquid-glass p-6 rounded-3xl space-y-4">
                 <div class="flex items-center space-x-3">
@@ -774,7 +882,6 @@
               </div>
             </div>
 
-            <!-- Right Contact Card (Fallow Inspired Form) -->
             <div class="lg:col-span-6">
               <div class="light-liquid-glass p-6 rounded-3xl space-y-4 border border-white/90">
                 <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
@@ -934,13 +1041,14 @@
         counter.innerText = `${currentSlide + 1} / ${totalSlides}`;
       }
 
+      // Update Desktop Nav Links
       for (let i = 0; i < totalSlides; i++) {
-        const btn = document.getElementById('nav-dot-' + i);
-        if (btn) {
+        const item = document.getElementById('nav-item-' + i);
+        if (item) {
           if (i === currentSlide) {
-            btn.className = "slide-nav-btn px-4 py-1.5 rounded-full bg-white text-brand-700 shadow-md transition-all";
+            item.classList.add('active');
           } else {
-            btn.className = "slide-nav-btn px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 transition-all";
+            item.classList.remove('active');
           }
         }
       }
@@ -967,6 +1075,21 @@
       if (e.key === 'ArrowRight') nextSlide();
       if (e.key === 'ArrowLeft') prevSlide();
     });
+
+    // Offcanvas Sidebar Drawer Logic (Fallow Navigation)
+    function openOffcanvas() {
+      const drawer = document.getElementById('offcanvasNav');
+      const backdrop = document.getElementById('offcanvasBackdrop');
+      if (drawer) drawer.classList.add('open');
+      if (backdrop) backdrop.classList.add('open');
+    }
+
+    function closeOffcanvas() {
+      const drawer = document.getElementById('offcanvasNav');
+      const backdrop = document.getElementById('offcanvasBackdrop');
+      if (drawer) drawer.classList.remove('open');
+      if (backdrop) backdrop.classList.remove('open');
+    }
 
     // Libero's Multi Tab Switcher
     function switchLiberoTab(tabId) {
